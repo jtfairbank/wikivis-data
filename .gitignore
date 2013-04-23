@@ -1,2 +1,5 @@
 # Ignore files containing configuration / sensitive data.
 settings.py
+
+# Ignore compiled / other programming files.
+*.pyc

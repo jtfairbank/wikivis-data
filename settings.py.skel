@@ -2,3 +2,4 @@
 RDS_host = ''
 RDS_name = ''
 RDS_pass = ''
+RDS_defaultDb = ''

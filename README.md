@@ -66,5 +66,7 @@ enwiki-page db
 --------------
 Source: http://dumps.wikimedia.org/enwiki/latest/enwiki-latest-page.sql.gz
 
+References: http://www.mediawiki.org/wiki/Manual:Page_table
+
 **Loading:** use the standard procedure (above); you can load this db in all at
 once (no splitting needed).
