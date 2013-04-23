@@ -47,13 +47,17 @@ their progress: http://www.ivarch.com/programs/pv.shtml
 
  1. Download the data into the EC2 instance:
 
-    curl \[link\] > \[file\]
+    curl LINK > FILE
 
  2. Uncompress the data files (if needed):
 
-    pv \[compressed_file\] | gzip -d > \[file\]
+    pv COMPRESSED_FILE | gzip -d > DATA_FILE
 
- 3. Use this guide to import data into RDS: http://aws.amazon.com/articles/2933
+ 3. Use [this guide](http://aws.amazon.com/articles/2933) to import data into RDS.
+    Small data files: `pv DATA_FILE | mysql --host=HOST --user=USER --password DB_NAME`
+    Large data files: split them, then treat each chunk as a small data file.
+
+    pv DATA_FILE | split -l 1000
 
 enwiki-page db
 --------------
