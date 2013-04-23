@@ -21,6 +21,14 @@ over-allocted resources.
 
 **Costs:** TODO
 
+Project Setup
+-------------
+ 1. Clone the project onto the EC2 instance's EBS.
+ 2. Copy settings.py.skel to settings.py and fill in the values.  This file is
+    .gitignore'd so don't worry about accidentally committing your private info.
+ 3. VirtualEnv: TODO
+ 4. Pip: TODO
+
 
 Data Sources
 ============

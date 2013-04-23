@@ -1,0 +1,4 @@
+# RDS conection info
+RDS_host = ''
+RDS_name = ''
+RDS_pass = ''
