@@ -6,6 +6,7 @@ import json
 # hack to import parent package files while using this as a script in a subpackage
 sys.path.append(sys.path.append('/'.join(os.getcwd().split('/')[:-1])))
 from settings import *
+import tables as tbl
 
 # pages table has 29 mil < X < 30 mil entries
 LEN = 1000000
@@ -70,12 +71,10 @@ try:
         i += 1
 
     # format output and write it
+    tbl.giveMeaning(results, tbl.Page.namespace_map)
     for ns in results:
         result = results[ns]
-        if '0' in result:
-            result['old'] = result.pop('0')
-        if '1' in result:
-            result['new'] = result.pop('1')
+        tbl.giveMeaning(result, tbl.Page.isNew_map)
 
     with open('data-new_vs_old-namespaced.json', 'w') as outfile:
         json.dump(results, outfile)
