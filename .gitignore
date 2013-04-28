@@ -3,3 +3,4 @@ settings.py
 
 # Ignore compiled / other programming files.
 *.pyc
+venv/
