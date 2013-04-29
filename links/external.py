@@ -13,6 +13,7 @@ import tables as tbl
 
 from tlds import *
 
+# there are 60 million < X < 61 million external links
 LEN = 1000000
 con = None
 
@@ -65,7 +66,7 @@ try:
 
     # query all entries in page, in increments of LEN
     i = 0
-    while total == i * LEN and i < 2:
+    while total == i * LEN:
         print i
 
         cur.execute(
@@ -100,14 +101,14 @@ try:
             domains = filter(lambda part: part != "", domains)
 
             if len(domains) == 0:
-                print "No domains: " + link
+                #print "No domains: " + link
                 invalidCount += 1
                 continue
 
             # protocol
             protocol = url[0]
             if protocol == "":
-                print "No protocol: " + link
+                #print "No protocol: " + link
                 invalidCount += 1
                 protocol = "none"
             if protocol not in protocols:
@@ -125,11 +126,11 @@ try:
 
             tld = domains[0]
             if (tld not in gtlds) and (tld not in ctlds):
-                print "Unkown tld: " + link
+                #print "Unkown tld: " + link
                 tld = "[none]"
 
             if tld == "":
-                print "No tld: " + link
+                #print "No tld: " + link
                 invalidCount += 1
                 tld = "none"
 
@@ -155,7 +156,20 @@ try:
 
         i += 1
 
-    # format output and write it
+        # CHECKPOINT: format output and write it
+        attrs = {
+            'total': total,
+            'invalid': invalidCount,
+            'protocols': protocols,
+            'tlds': tlds,
+            'sites': sites,
+            'subdomains': subdomainsCount
+        }
+
+        with open('data/data-externallinks-attrs-' + str(i) + '.json', 'w') as outfile:
+            json.dump(attrs, outfile)
+
+    # FINAL OUTPUT: format output and write it
     attrs = {
         'total': total,
         'invalid': invalidCount,
@@ -165,7 +179,7 @@ try:
         'subdomains': subdomainsCount
     }
 
-    with open('data-externallinks-attrs.json', 'w') as outfile:
+    with open('data-externallinks-attrs-.json', 'w') as outfile:
         json.dump(attrs, outfile)
 
 except mdb.Error, e:

@@ -1,6 +1,9 @@
 # Ignore files containing configuration / sensitive data.
 settings.py
 
+# Ignore large data files used to store temporary / checkpoint data.
+data/
+
 # Ignore compiled / other programming files.
 *.pyc
 venv/
