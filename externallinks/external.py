@@ -24,38 +24,16 @@ protocols = {
     'total': 0,
     'none': 0
 }
-#{
-#    'total': X+Y+Z+...
-#    'none': X
-#    'http': Y
-#    'https': Z
-#    ...
-#}
 
 tlds = {
     'total': 0,
     'none': 0,
     'ip': 0
 }
-#{
-#    'total': X+Y+Z+...
-#    'none': X
-#    'com': Y
-#    'edu': Z
-#    ...
-#}
 
 sites = {
     'total': 0,
-    'none': 0
 }
-#{
-#    'total': X+Y+Z+...
-#    'ip': X
-#    'none': Y
-#    'example.com': Z
-#    ...
-#}
 
 subdomainsCount = 0
 
@@ -140,7 +118,7 @@ try:
 
             tlds['total'] += 1
 
-            # domains
+            # domains (sites)
             if len(domains) > 1:
                 domain = domains[1] + "." + domains[0]
 
