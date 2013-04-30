@@ -144,7 +144,7 @@ try:
             'subdomains': subdomainsCount
         }
 
-        with open('data/data-externallinks-attrs-' + str(i) + '.json', 'w') as outfile:
+        with open('data/data-externallinks-' + str(i) + '.json', 'w') as outfile:
             json.dump(attrs, outfile)
 
     # FINAL OUTPUT: format output and write it
@@ -157,7 +157,7 @@ try:
         'subdomains': subdomainsCount
     }
 
-    with open('data-externallinks-attrs.json', 'w') as outfile:
+    with open('data-externallinks.json', 'w') as outfile:
         json.dump(attrs, outfile)
 
 except mdb.Error, e:
